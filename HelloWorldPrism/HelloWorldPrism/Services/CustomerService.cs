@@ -9,7 +9,7 @@ namespace HelloWorldPrism.Services
 {
     public class CustomerService
     {
-        private const string baseUrl = "http://localhost:51255/api/customer";
+        private const string baseUrl = "http://bookingfree.azurewebsites.net/api/customer";
         //private const string baseUrl = "http://api.opendota.com/api/players/9999";
 
         public async System.Threading.Tasks.Task<Customer> GetCustomerAsync(int id)
