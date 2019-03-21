@@ -29,7 +29,11 @@ namespace HelloWorldPrism
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            // Register services
             containerRegistry.Register<CustomerService>();
+            containerRegistry.Register<BookingService>();
+
+            // Register navigation
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<CustomerManagement, CustomerManagementViewModel>();

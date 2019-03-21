@@ -12,6 +12,11 @@ namespace HelloWorldPrism.Services
         private const string baseUrl = "http://bookingfree.azurewebsites.net/api/customer";
         //private const string baseUrl = "http://api.opendota.com/api/players/9999";
 
+        /// <summary>
+        /// Get a customer from the ID
+        /// </summary>
+        /// <param name="id">Customer ID</param>
+        /// <returns>A customer with the ID</returns>
         public async System.Threading.Tasks.Task<Customer> GetCustomerAsync(int id)
         {
             using (var client = new HttpClient())
@@ -26,6 +31,10 @@ namespace HelloWorldPrism.Services
             }
         }
 
+        /// <summary>
+        /// Get all customers
+        /// </summary>
+        /// <returns>List of all customers</returns>
         public async System.Threading.Tasks.Task<List<Customer>> GetAllCustomersAsync()
         {
             using (var client = new HttpClient())
@@ -40,6 +49,10 @@ namespace HelloWorldPrism.Services
             }
         }
 
+        /// <summary>
+        /// Create a customer
+        /// </summary>
+        /// <param name="name">The name of the customer</param>
         public void CreateCustomer(string name)
         {
             using (var client = new HttpClient())

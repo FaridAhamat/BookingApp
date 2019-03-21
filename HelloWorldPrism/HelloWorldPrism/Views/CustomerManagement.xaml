@@ -4,16 +4,22 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="HelloWorldPrism.Views.CustomerManagement">
+    <ContentPage.Padding>4, 2, 4, 2</ContentPage.Padding>
 
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Label Text="Customers List &#10;" FontSize="Large" FontAttributes="Bold" />
         <ListView ItemsSource="{Binding Customers}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Id}"/>
-                            <Label Text="{Binding Name}"/>
-                        </StackLayout>
+                        <ContentView Padding="2">
+                            <Frame OutlineColor="AliceBlue" Padding="2">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Id}"/>
+                                    <Label Text="{Binding Name}"/>
+                                </StackLayout>
+                            </Frame>
+                        </ContentView>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
