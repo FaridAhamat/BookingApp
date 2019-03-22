@@ -16,12 +16,16 @@ namespace HelloWorldPrism.ViewModels
     {
         private readonly CustomerService customerService;
         private ObservableCollection<Customer> customers;
+        private DelegateCommand navigateCreateCustomer;
 
         public ObservableCollection<Customer> Customers
         {
             get { return customers; }
             set { SetProperty(ref customers, value); }
         }
+
+        public DelegateCommand NavigateCreateCustomer =>
+            navigateCreateCustomer ?? (navigateCreateCustomer = new DelegateCommand(ExecuteNavigateCreateCustomer));
 
         public CustomerManagementViewModel(INavigationService navigationService, CustomerService customerService) : base(navigationService)
         {
@@ -45,6 +49,11 @@ namespace HelloWorldPrism.ViewModels
             {
                 Debug.WriteLine($"Error loading data in: {ex}");
             }
+        }
+
+        private void ExecuteNavigateCreateCustomer()
+        {
+            // TODO
         }
     }
 }

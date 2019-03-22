@@ -4,9 +4,29 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="HelloWorldPrism.Views.BookingManagement">
-    
+
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="This is booking management page"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Bookings List" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start"/>
+        </StackLayout>
+        <ListView ItemsSource="{Binding Bookings}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ContentView Padding="2">
+                            <Frame OutlineColor="AliceBlue" Padding="2">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Id}"/>
+                                    <Label Text="{Binding CustomerId}"/>
+                                    <Label Text="{Binding BookingStatus}"/>
+                                    <Button Text="Check" HorizontalOptions="EndAndExpand"/>
+                                </StackLayout>
+                            </Frame>
+                        </ContentView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
-    
+
 </ContentPage>
