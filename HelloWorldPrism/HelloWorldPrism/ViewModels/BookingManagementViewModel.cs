@@ -16,12 +16,16 @@ namespace HelloWorldPrism.ViewModels
 	{
         private readonly BookingService bookingService;
         private ObservableCollection<Booking> bookings;
+        private DelegateCommand<Booking> navigateBookingEdit;
 
         public ObservableCollection<Booking> Bookings
         {
             get { return bookings; }
             set { SetProperty(ref bookings, value); }
         }
+
+        public DelegateCommand<Booking> NavigateBookingEdit =>
+            navigateBookingEdit ?? (navigateBookingEdit = new DelegateCommand<Booking>(ExecuteNavigateBookingEditAsync));
 
         public BookingManagementViewModel(INavigationService navigationService, BookingService bookingService) : base(navigationService)
         {
@@ -45,6 +49,14 @@ namespace HelloWorldPrism.ViewModels
             {
                 Debug.WriteLine($"Error loading data in: {ex}");
             }
+        }
+
+        private async void ExecuteNavigateBookingEditAsync(Booking booking)
+        {
+            var param = new NavigationParameters();
+            param.Add("booking", booking);
+
+            await NavigationService.NavigateAsync("BookingEdit", param);
         }
     }
 }

@@ -38,6 +38,8 @@ namespace HelloWorldPrism
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<CustomerManagement, CustomerManagementViewModel>();
             containerRegistry.RegisterForNavigation<BookingManagement, BookingManagementViewModel>();
+            containerRegistry.RegisterForNavigation<CustomerCreate, CustomerCreateViewModel>();
+            containerRegistry.RegisterForNavigation<BookingEdit, BookingEditViewModel>();
         }
     }
 }

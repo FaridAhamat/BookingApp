@@ -9,7 +9,7 @@
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
         <StackLayout Orientation="Horizontal">
             <Label Text="Customers List" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start"/>
-            <Button Text="Create" HorizontalOptions="EndAndExpand"/>
+            <Button Text="Create" Command="{Binding NavigateCustomerCreate}" HorizontalOptions="EndAndExpand"/>
         </StackLayout>
         <ListView ItemsSource="{Binding Customers}">
             <ListView.ItemTemplate>

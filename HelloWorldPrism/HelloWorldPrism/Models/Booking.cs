@@ -1,13 +1,30 @@
-﻿using System;
+﻿using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace HelloWorldPrism.Models
 {
-    public class Booking
+    public class Booking : BindableBase
     {
-        public int Id { get; set; }
-        public int CustomerId { get; set; }
+        private int id;
+        private int customerId;
+        private BookingStatus bookingStatus;
+
+        public int Id
+        {
+            get;set;
+            //get => id;
+            //set => SetProperty(ref id, value);
+        }
+
+        public int CustomerId
+        {
+            get;set;
+            //get => customerId;
+            //set => SetProperty(ref customerId, value);
+        }
+
         public BookingStatus BookingStatus { get; set; }
     }
 

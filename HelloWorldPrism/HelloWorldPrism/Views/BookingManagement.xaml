@@ -9,17 +9,20 @@
         <StackLayout Orientation="Horizontal">
             <Label Text="Bookings List" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start"/>
         </StackLayout>
-        <ListView ItemsSource="{Binding Bookings}">
+        <ListView x:Name="BookingListView" ItemsSource="{Binding Bookings}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <ContentView Padding="2">
+                        <ContentView Padding="2" x:Name="BookingContentView">
                             <Frame OutlineColor="AliceBlue" Padding="2">
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding Id}"/>
                                     <Label Text="{Binding CustomerId}"/>
                                     <Label Text="{Binding BookingStatus}"/>
-                                    <Button Text="Check" HorizontalOptions="EndAndExpand"/>
+                                    <Button Text="Check" HorizontalOptions="EndAndExpand" 
+                                            BindingContext="{Binding Source={x:Reference BookingListView}, Path=BindingContext}" 
+                                            Command="{Binding NavigateBookingEdit}" 
+                                            CommandParameter="{Binding Source={x:Reference BookingContentView}, Path=BindingContext}"/>
                                 </StackLayout>
                             </Frame>
                         </ContentView>

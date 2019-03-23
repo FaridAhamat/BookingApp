@@ -16,7 +16,7 @@ namespace HelloWorldPrism.ViewModels
     {
         private readonly CustomerService customerService;
         private ObservableCollection<Customer> customers;
-        private DelegateCommand navigateCreateCustomer;
+        private DelegateCommand navigateCustomerCreate;
 
         public ObservableCollection<Customer> Customers
         {
@@ -24,8 +24,8 @@ namespace HelloWorldPrism.ViewModels
             set { SetProperty(ref customers, value); }
         }
 
-        public DelegateCommand NavigateCreateCustomer =>
-            navigateCreateCustomer ?? (navigateCreateCustomer = new DelegateCommand(ExecuteNavigateCreateCustomer));
+        public DelegateCommand NavigateCustomerCreate =>
+            navigateCustomerCreate ?? (navigateCustomerCreate = new DelegateCommand(ExecuteNavigateCustomerCreate));
 
         public CustomerManagementViewModel(INavigationService navigationService, CustomerService customerService) : base(navigationService)
         {
@@ -51,9 +51,9 @@ namespace HelloWorldPrism.ViewModels
             }
         }
 
-        private void ExecuteNavigateCreateCustomer()
+        private async void ExecuteNavigateCustomerCreate()
         {
-            // TODO
+            await NavigationService.NavigateAsync("CustomerCreate");
         }
     }
 }

@@ -1,16 +1,13 @@
 ﻿using HelloWorldPrism.Models;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 
 namespace HelloWorldPrism.Services
 {
     public class CustomerService
     {
         private const string baseUrl = "http://bookingfree.azurewebsites.net/api/customer";
-        //private const string baseUrl = "http://api.opendota.com/api/players/9999";
 
         /// <summary>
         /// Get a customer from the ID
@@ -53,10 +50,13 @@ namespace HelloWorldPrism.Services
         /// Create a customer
         /// </summary>
         /// <param name="name">The name of the customer</param>
-        public void CreateCustomer(string name)
+        public async System.Threading.Tasks.Task CreateCustomerAsync(string name)
         {
             using (var client = new HttpClient())
             {
+                var customer = new Customer { Name = name, };
+
+                await client.PostAsJsonAsync(baseUrl, customer);
             }
         }
     }
