@@ -5,26 +5,10 @@ using System.Text;
 
 namespace HelloWorldPrism.Models
 {
-    public class Booking : BindableBase
+    public class Booking
     {
-        private int id;
-        private int customerId;
-        private BookingStatus bookingStatus;
-
-        public int Id
-        {
-            get;set;
-            //get => id;
-            //set => SetProperty(ref id, value);
-        }
-
-        public int CustomerId
-        {
-            get;set;
-            //get => customerId;
-            //set => SetProperty(ref customerId, value);
-        }
-
+        public int Id { get; set; }
+        public int CustomerId { get; set; }
         public BookingStatus BookingStatus { get; set; }
     }
 

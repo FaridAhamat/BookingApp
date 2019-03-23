@@ -49,14 +49,28 @@ namespace HelloWorldPrism.Services
         }
 
         /// <summary>
-        /// Create a booking
+        /// Move the booking to next status
         /// </summary>
         /// <param name="name"></param>
-        public void CreateBooking(string name)
+        public async System.Threading.Tasks.Task MoveBookingToNextAsync(int id, short currentStatus)
         {
             using (var client = new HttpClient())
             {
-                //TODO
+                var jsonContent = new Dictionary<string, string>();
+                jsonContent.Add("op", "replace");
+                jsonContent.Add("path", "BookingStatus");
+                jsonContent.Add("value", (currentStatus + 1).ToString());
+
+                string jsonString = "[" + JsonConvert.SerializeObject(jsonContent, Formatting.Indented) + "]";
+
+                var httpContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+                var httpRequest = new HttpRequestMessage(new HttpMethod("PATCH"), baseUrl + "/" + id)
+                {
+                    Content = httpContent,
+                };
+
+                await client.SendAsync(httpRequest);
             }
         }
     }

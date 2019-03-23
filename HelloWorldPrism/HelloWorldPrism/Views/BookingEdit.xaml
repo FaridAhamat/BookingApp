@@ -4,9 +4,13 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="HelloWorldPrism.Views.BookingEdit">
+    <ContentPage.Padding>4, 2, 4, 2</ContentPage.Padding>
 
     <StackLayout>
-        <Label Text="{Binding Booking.Id}"/>
-        <Label Text="{Binding Booking.CustomerId}"/>
+        <Label Text="Booking Details" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start"/>
+        <Label Text="{Binding Booking.Id, StringFormat='Booking ID: {0}'}"/>
+        <Label Text="{Binding Booking.CustomerId, StringFormat='Customer ID: {0}'}"/>
+        <Label Text="{Binding Booking.BookingStatus, StringFormat='Booking Status: {0}'}"/>
+        <Button Text="Move To Next" Command="{Binding MoveNext}" HorizontalOptions="CenterAndExpand"/>
     </StackLayout>
 </ContentPage>
