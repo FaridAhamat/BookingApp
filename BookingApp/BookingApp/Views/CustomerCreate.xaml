@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="BookingApp.Views.CustomerCreate">
+    <ContentPage.Padding>4, 2, 4, 2</ContentPage.Padding>
+
+    <StackLayout>
+        <Label Text="Customers List" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Name: "/>
+            <Entry Text="{Binding CustomerName, Mode=OneWayToSource}" x:Name="CustomerName" Placeholder="Customer's name" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+        <Button Text="Create" Command="{Binding CustomerCreate}" CommandParameter="{Binding Source={x:Reference CustomerName}, Path=Text}" HorizontalOptions="Center"/>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="BookingApp.Views.BookingEdit">
+    <ContentPage.Padding>4, 2, 4, 2</ContentPage.Padding>
+
+    <StackLayout>
+        <Label Text="Booking Details" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start"/>
+        <Label Text="{Binding Booking.Id, StringFormat='Booking ID: {0}'}"/>
+        <Label Text="{Binding Booking.CustomerId, StringFormat='Customer ID: {0}'}"/>
+        <Label Text="{Binding Booking.BookingStatus, StringFormat='Booking Status: {0}'}"/>
+        <Button Text="Move To Next" Command="{Binding MoveNext}" HorizontalOptions="CenterAndExpand"/>
+    </StackLayout>
+</ContentPage>

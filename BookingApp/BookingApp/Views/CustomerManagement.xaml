@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="BookingApp.Views.CustomerManagement">
+    <ContentPage.Padding>4, 2, 4, 2</ContentPage.Padding>
+
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Customers List" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start"/>
+            <Button Text="Create" Command="{Binding NavigateCustomerCreate}" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+        <ListView ItemsSource="{Binding Customers}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ContentView Padding="2">
+                            <Frame OutlineColor="AliceBlue" Padding="2">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Id}"/>
+                                    <Label Text="{Binding Name}"/>
+                                </StackLayout>
+                            </Frame>
+                        </ContentView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+    
+</ContentPage>

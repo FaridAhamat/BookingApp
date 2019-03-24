@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="BookingApp.Views.BookingManagement">
+
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Bookings List" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start"/>
+        </StackLayout>
+        <ListView x:Name="BookingListView" ItemsSource="{Binding Bookings}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ContentView Padding="2" x:Name="BookingContentView">
+                            <Frame OutlineColor="AliceBlue" Padding="2">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Id}"/>
+                                    <Label Text="{Binding CustomerId}"/>
+                                    <Label Text="{Binding BookingStatus}"/>
+                                    <Button Text="Check" HorizontalOptions="EndAndExpand" 
+                                            BindingContext="{Binding Source={x:Reference BookingListView}, Path=BindingContext}" 
+                                            Command="{Binding NavigateBookingEdit}" 
+                                            CommandParameter="{Binding Source={x:Reference BookingContentView}, Path=BindingContext}"/>
+                                </StackLayout>
+                            </Frame>
+                        </ContentView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
