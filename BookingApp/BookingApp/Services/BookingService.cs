@@ -51,7 +51,8 @@ namespace BookingApp.Services
         /// <summary>
         /// Move the booking to next status
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="id">Id of the booking</param>
+        /// <param name="currentStatus">Current status of the booking</param>
         public async System.Threading.Tasks.Task MoveBookingToNextAsync(int id, short currentStatus)
         {
             using (var client = new HttpClient())
@@ -71,6 +72,22 @@ namespace BookingApp.Services
                 };
 
                 await client.SendAsync(httpRequest);
+            }
+        }
+
+        /// <summary>
+        /// Create a booking
+        /// </summary>
+        /// <param name="customerId">The Id of the customer</param>
+        public async System.Threading.Tasks.Task<bool> CreateBookingAsync(int customerId)
+        {
+            using (var client = new HttpClient())
+            {
+                var booking = new Booking { CustomerId = customerId };
+
+                var response = await client.PostAsJsonAsync(baseUrl, booking);
+
+                return response.IsSuccessStatusCode;
             }
         }
     }

@@ -7,7 +7,7 @@
     <ContentPage.Padding>4, 2, 4, 2</ContentPage.Padding>
 
     <StackLayout>
-        <Label Text="Customers List" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start"/>
+        <Label Text="Create Customer" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start"/>
         <StackLayout Orientation="Horizontal">
             <Label Text="Name: "/>
             <Entry Text="{Binding CustomerName, Mode=OneWayToSource}" x:Name="CustomerName" Placeholder="Customer's name" HorizontalOptions="FillAndExpand"/>

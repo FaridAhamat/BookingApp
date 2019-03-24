@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="BookingApp.Views.BookingCreate">
+    <ContentPage.Padding>4, 2, 4, 2</ContentPage.Padding>
+
+    <StackLayout>
+        <Label Text="Create Booking" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Customer ID: "/>
+            <Entry Text="{Binding CustomerId, Mode=OneWayToSource}" 
+                   x:Name="CustomerId" 
+                   Keyboard="Numeric"
+                   Placeholder="Customer's ID" 
+                   HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+        <Button Text="Create" Command="{Binding BookingCreate}" HorizontalOptions="Center"/>
+    </StackLayout>
+</ContentPage>

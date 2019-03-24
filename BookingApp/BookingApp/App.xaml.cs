@@ -36,9 +36,14 @@ namespace BookingApp
             // Register navigation
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+
+            // Customer pages
             containerRegistry.RegisterForNavigation<CustomerManagement, CustomerManagementViewModel>();
-            containerRegistry.RegisterForNavigation<BookingManagement, BookingManagementViewModel>();
             containerRegistry.RegisterForNavigation<CustomerCreate, CustomerCreateViewModel>();
+
+            // Booking pages
+            containerRegistry.RegisterForNavigation<BookingManagement, BookingManagementViewModel>();
+            containerRegistry.RegisterForNavigation<BookingCreate, BookingCreateViewModel>();
             containerRegistry.RegisterForNavigation<BookingEdit, BookingEditViewModel>();
         }
     }

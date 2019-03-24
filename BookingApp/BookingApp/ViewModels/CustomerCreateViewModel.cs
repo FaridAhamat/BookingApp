@@ -18,8 +18,6 @@ namespace BookingApp.ViewModels
         public DelegateCommand<string> CustomerCreate
             => customerCreate ?? (customerCreate = new DelegateCommand<string>(ExecuteCustomerCreateAsync));
 
-        public bool IsEnabled = true;
-
         public string CustomerName { get; set; }
 
         public CustomerCreateViewModel(CustomerService customerService, INavigationService navigationService) : base(navigationService)

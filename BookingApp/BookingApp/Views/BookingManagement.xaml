@@ -8,6 +8,7 @@
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
         <StackLayout Orientation="Horizontal">
             <Label Text="Bookings List" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start"/>
+            <Button Text="Create" Command="{Binding NavigateBookingCreate}" HorizontalOptions="EndAndExpand"/>
         </StackLayout>
         <ListView x:Name="BookingListView" ItemsSource="{Binding Bookings}">
             <ListView.ItemTemplate>

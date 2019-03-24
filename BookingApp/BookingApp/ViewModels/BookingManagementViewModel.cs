@@ -17,12 +17,16 @@ namespace BookingApp.ViewModels
         private readonly BookingService bookingService;
         private ObservableCollection<Booking> bookings;
         private DelegateCommand<Booking> navigateBookingEdit;
+        private DelegateCommand navigateBookingCreate;
 
         public ObservableCollection<Booking> Bookings
         {
             get { return bookings; }
             set { SetProperty(ref bookings, value); }
         }
+
+        public DelegateCommand NavigateBookingCreate =>
+            navigateBookingCreate ?? (navigateBookingCreate = new DelegateCommand(ExecuteNavigateBookingCreateAsync));
 
         public DelegateCommand<Booking> NavigateBookingEdit =>
             navigateBookingEdit ?? (navigateBookingEdit = new DelegateCommand<Booking>(ExecuteNavigateBookingEditAsync));
@@ -57,6 +61,11 @@ namespace BookingApp.ViewModels
             param.Add("booking", booking);
 
             await NavigationService.NavigateAsync("BookingEdit", param);
+        }
+
+        private async void ExecuteNavigateBookingCreateAsync()
+        {
+            await NavigationService.NavigateAsync("BookingCreate");
         }
     }
 }
